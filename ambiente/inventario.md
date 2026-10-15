@@ -14,8 +14,14 @@
 | Python | 3.12.3 |
 | Git | 2.43.0 |
 | sysstat (vmstat/iostat) | 12.6.1-2 |
-| Ollama | [preencher se a equipe decidir usá-lo no servidor, com `ollama --version`] |
-| Bibliotecas do servidor | [preencher quando as dependências forem definidas] |
+
+## Evidências em fotos: 
+
+<img width="690" height="662" alt="image" src="https://github.com/user-attachments/assets/739d9d6d-919b-4a7a-a5fb-52206ed18b2b" />
+
+<img width="1346" height="671" alt="image" src="https://github.com/user-attachments/assets/a638ded4-c459-4233-a41b-4a30ada9ae52" />
+
+
 
 ## Resumo do ambiente
 
