@@ -36,10 +36,10 @@ entrega/                  Materiais finais de entrega
 
 ## Ambiente e execução
 
-O ambiente ainda precisa ser inventariado em [ambiente/inventario.md](ambiente/inventario.md).
-As medições devem ser feitas e descritas em Linux nativo, VM Linux ou WSL2;
-registre a opção utilizada e não misture resultados obtidos em ambientes
-diferentes sem identificá-los.
+O ambiente de Enzo foi inventariado em [ambiente/inventario.md](ambiente/inventario.md),
+usando WSL2 com Ubuntu 24.04.1. As medições devem ser feitas e descritas em
+Linux nativo, VM Linux ou WSL2; registre a opção utilizada e não misture
+resultados obtidos em ambientes diferentes sem identificá-los.
 
 A demonstração de condição de corrida usa apenas a biblioteca padrão do Python:
 
@@ -53,7 +53,7 @@ antes de coletar dados.
 
 ## Estado do trabalho
 
-Este repositório contém a estrutura inicial, documentação de planejamento e uma
-demonstração executável de sincronização. Resultados, inventário de hardware e
-software, contribuições da equipe e artefatos finais devem ser preenchidos com
-dados realmente coletados; nenhum resultado experimental está presumido.
+Este repositório contém a estrutura inicial, documentação de planejamento, o
+inventário do ambiente de Enzo e uma demonstração executável de sincronização.
+Resultados, contribuições da equipe e artefatos finais devem ser preenchidos
+com dados realmente coletados; nenhum resultado experimental está presumido.
