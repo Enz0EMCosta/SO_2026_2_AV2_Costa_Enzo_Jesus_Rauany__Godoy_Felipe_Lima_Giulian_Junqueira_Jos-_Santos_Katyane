@@ -193,7 +193,7 @@ Os quatro relatórios seguintes (amostras de 1 segundo) não mostraram atividade
 
 Leitura da linha de base: com a máquina em repouso, a CPU fica praticamente 100% ociosa, não há atividade de swap (`si` e `so` em 0), o `iowait` é próximo de zero e cerca de 3,4 GB de memória estão livres. Esses valores servem de referência para comparar com os experimentos de `mmap` (C2), concorrência (C3) e pressão de memória (C5).
 
-## Explicação conceitual (seção 5)
+## Explicação conceitual (Seção 5)
 
 **Diferença entre `MemFree`, `MemAvailable`, cache e swap**
 
