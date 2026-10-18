@@ -1,0 +1,2 @@
+horario,ambiente,python,pid,configuracao,carga_mib,repeticao,tempo_s,rss_mib,vsz_mib,memavailable_mib,swap_usado_mib,faltas_menores_delta,faltas_maiores_delta
+2026-10-17T20:57:24.365778-03:00,Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43,3.14.4,1662,C5,100,1,0.264888,115.67,121.64,3828.97,0.0,25601,0
