@@ -41,6 +41,34 @@ consumo de memória física. Não foi observado uso de swap.
 As três tentativas produziram o erro FileNotFoundError,
 que foi tratado e registrado pelo programa.
 
+
+### Análise estatística dos tempos
+
+Para avaliar a dispersão dos resultados, foram calculados
+a média, o desvio-padrão amostral, o mínimo e o máximo
+das três repetições de cada cenário.
+
+| Configuração | Média (s) | Desvio-padrão (s) | Mínimo (s) | Máximo (s) |
+|---|---:|---:|---:|---:|
+| C5 — 100 MiB | 0,138452 | 0,073089 | 0,095836 | 0,222847 |
+| C5 — 250 MiB | 0,280650 | 0,098335 | 0,214362 | 0,393632 |
+| C5 — 500 MiB | 0,554763 | 0,257336 | 0,371561 | 0,848971 |
+| C6 — Arquivo inexistente | 0,002523 | 0,000357 | 0,002272 | 0,002932 |
+
+Na C5, o tempo médio aumentou conforme a carga de memória.
+A carga de 500 MiB apresentou a maior dispersão absoluta.
+
+Na C6, as três execuções registraram a falha como tratada.
+
+Como foram realizadas apenas três repetições por cenário,
+os resultados devem ser interpretados como observações
+preliminares. Não permitem estabelecer conclusões
+estatísticas robustas sobre o desempenho do servidor.
+
+Os tempos medem operações sintéticas independentes,
+não a latência de consultas do GenResearch-Servidor.
+
+
 ## 4. Comparação C1–C6
 
 A comparação geral será preenchida após a disponibilização
