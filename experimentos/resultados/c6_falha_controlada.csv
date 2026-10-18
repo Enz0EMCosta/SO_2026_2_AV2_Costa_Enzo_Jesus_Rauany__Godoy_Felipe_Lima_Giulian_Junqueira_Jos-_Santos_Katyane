@@ -1,0 +1,4 @@
+horario,ambiente,python,pid,configuracao,cenario,repeticao,arquivo,status,tipo_erro,mensagem,tempo_s
+2026-10-17T21:07:56.044511-03:00,Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43,3.14.4,3002,C6,arquivo_inexistente,1,experimentos/dados/arquivo_inexistente.txt,falha_tratada,FileNotFoundError,Arquivo nao encontrado,0.002365
+2026-10-17T21:07:56.114226-03:00,Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43,3.14.4,3002,C6,arquivo_inexistente,2,experimentos/dados/arquivo_inexistente.txt,falha_tratada,FileNotFoundError,Arquivo nao encontrado,0.002272
+2026-10-17T21:07:56.152836-03:00,Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43,3.14.4,3002,C6,arquivo_inexistente,3,experimentos/dados/arquivo_inexistente.txt,falha_tratada,FileNotFoundError,Arquivo nao encontrado,0.002932
