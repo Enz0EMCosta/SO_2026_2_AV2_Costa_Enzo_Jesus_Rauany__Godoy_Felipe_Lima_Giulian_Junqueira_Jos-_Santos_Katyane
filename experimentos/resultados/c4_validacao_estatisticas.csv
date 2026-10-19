@@ -1,0 +1,13 @@
+configuracao,repeticoes,media_s,desvio_padrao_s,minimo_s,maximo_s
+"C4 — distintas, cap 8, LRU, 4 trab.",3,0.779667,0.002854,0.7775,0.7829
+"C4 — distintas, cap 32, FIFO, 4 trab.",3,0.826767,0.006813,0.8189,0.8308
+"C4 — distintas, cap 32, LRU, 1 trab.",3,3.234533,0.117414,3.1024,3.3269
+"C4 — distintas, cap 32, LRU, 2 trab.",3,1.568133,0.010283,1.5563,1.5749
+"C4 — distintas, cap 32, LRU, 4 trab.",3,0.7829,0.001819,0.7818,0.785
+"C4 — distintas, cap 128, LRU, 4 trab.",3,0.782167,0.003707,0.7779,0.7846
+"C4 — repetidas, cap 8, LRU, 4 trab.",3,0.4673,0.015643,0.457,0.4853
+"C4 — repetidas, cap 32, FIFO, 4 trab.",3,0.264967,0.031493,0.229,0.2876
+"C4 — repetidas, cap 32, LRU, 1 trab.",3,0.809267,0.102136,0.6954,0.8928
+"C4 — repetidas, cap 32, LRU, 2 trab.",3,0.4197,0.055113,0.3653,0.4755
+"C4 — repetidas, cap 32, LRU, 4 trab.",3,0.2201,0.032873,0.1823,0.242
+"C4 — repetidas, cap 128, LRU, 4 trab.",3,0.197733,0.016352,0.1795,0.2111
