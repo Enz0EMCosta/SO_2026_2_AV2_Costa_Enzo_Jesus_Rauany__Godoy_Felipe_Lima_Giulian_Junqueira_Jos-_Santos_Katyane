@@ -1,12 +1,12 @@
-\# 6 - Leitura convencional vs. mmap + Memória Virtual (C1 + C2 + Parte E) — Giulian
+6 - Leitura convencional vs. mmap + Memória Virtual (C1 + C2 + Parte E) — Giulian
 
 
 
-\*\*Giulian Fabio Bastos Amorim Lima\*\*
+Giulian Fabio Bastos Amorim Lima
 
 
 
-\## Objetivo
+ Objetivo
 
 
 
@@ -14,17 +14,16 @@ Comparar a leitura convencional de arquivos com `open()` e `read()` e o acesso a
 
 
 
-\- \*\*Corpus pequeno:\*\* arquivos de 64 KiB.
+Corpus pequeno: arquivos de 64 KiB.
 
-\- \*\*Corpus grande:\*\* arquivos de 8 MiB.
+Corpus grande: arquivos de 8 MiB.
 
-\- \*\*Repetições:\*\* 3 por arquivo e método, com 2 passagens.
+Repetições: 3 por arquivo e método, com 2 passagens.
 
-\- \*\*Tamanho do bloco de leitura convencional:\*\* 65.536 bytes.
+Tamanho do bloco de leitura convencional: 65.536 bytes.
 
 
-
-\## Leitura convencional
+Leitura convencional
 
 
 
@@ -32,7 +31,7 @@ O programa abre o arquivo com `open()` e lê seu conteúdo em blocos usando `rea
 
 
 
-\## Mapeamento de memória
+Mapeamento de memória
 
 
 
@@ -40,11 +39,7 @@ O programa abre o arquivo e utiliza `mmap` para mapear seu conteúdo na memória
 
 
 
-\## Estrutura do teste
-
-
-
-\## Resultados observados
+Resultados observados:
 
 
 
@@ -60,21 +55,13 @@ A validação realizada comparou 36 pares de registros. Não foram encontradas d
 
 
 
-\## Limitações
+Limitações
+-Os tempos incluem o processamento necessário para calcular SHA-256.
+-As faltas de página são diferenças observadas no processo e não representam exclusivamente as faltas causadas pelo arquivo.
+-A primeira passagem não garante cache de disco frio.
+-O resultado vale para o ambiente, corpus e parâmetros utilizados; não permite concluir que um método seja sempre superior.
 
-
-
-\- Os tempos incluem o processamento necessário para calcular SHA-256.
-
-\- As faltas de página são diferenças observadas no processo e não representam exclusivamente as faltas causadas pelo arquivo.
-
-\- A primeira passagem não garante cache de disco frio.
-
-\- O resultado vale para o ambiente, corpus e parâmetros utilizados; não permite concluir que um método seja sempre superior.
-
-
-
-\## Conclusão
+Conclusão:
 
 
 
