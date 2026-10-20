@@ -1,0 +1,44 @@
+ENVIADA P0-Q0 | fila=1 | espera por vaga=0.0000s
+ENVIADA P0-Q1 | fila=2 | espera por vaga=0.0000s
+ENVIADA P0-Q2 | fila=3 | espera por vaga=0.0000s
+ENVIADA P0-Q3 | fila=3 | espera por vaga=0.0033s
+ENVIADA P1-Q0 | fila=3 | espera por vaga=0.0038s
+CONSUMIDOR 1 | P0-Q1 | cache=ERRO | espera na fila=0.0047s | atendimento=0.0377s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+ENVIADA P0-Q4 | fila=3 | espera por vaga=0.0385s
+CONSUMIDOR 0 | P0-Q0 | cache=ERRO | espera na fila=0.0037s | atendimento=0.0400s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+CONSUMIDOR 0 | P0-Q3 | cache=ACERTO | espera na fila=0.0395s | atendimento=0.0000s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+CONSUMIDOR 0 | P1-Q0 | cache=ACERTO | espera na fila=0.0388s | atendimento=0.0000s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+CONSUMIDOR 0 | P0-Q4 | cache=ACERTO | espera na fila=0.0008s | atendimento=0.0000s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+ENVIADA P1-Q1 | fila=1 | espera por vaga=0.0389s
+ENVIADA P1-Q2 | fila=2 | espera por vaga=0.0000s
+ENVIADA P1-Q3 | fila=3 | espera por vaga=0.0000s
+CONSUMIDOR 0 | P1-Q1 | cache=ACERTO | espera na fila=0.0002s | atendimento=0.0000s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+CONSUMIDOR 0 | P1-Q2 | cache=ACERTO | espera na fila=0.0006s | atendimento=0.0000s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+CONSUMIDOR 0 | P1-Q3 | cache=ACERTO | espera na fila=0.0007s | atendimento=0.0000s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+ENVIADA P1-Q4 | fila=1 | espera por vaga=0.0007s
+ENVIADA P1-Q5 | fila=2 | espera por vaga=0.0000s
+ENVIADA P0-Q5 | fila=3 | espera por vaga=0.0016s
+CONSUMIDOR 0 | P1-Q4 | cache=ACERTO | espera na fila=0.0009s | atendimento=0.0000s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+CONSUMIDOR 0 | P1-Q5 | cache=ACERTO | espera na fila=0.0009s | atendimento=0.0000s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+CONSUMIDOR 0 | P0-Q5 | cache=ACERTO | espera na fila=0.0006s | atendimento=0.0000s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+CONSUMIDOR 1 | P0-Q2 | cache=ERRO | espera na fila=0.0418s | atendimento=0.0371s | resposta=[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']
+
+RESULTADO DA INTEGRAÇÃO
+Requisições enviadas: 12
+Concluídas: 12
+Falhas de processamento: 0
+Não concluídas: 0
+Duplicadas: 0
+Acertos do cache: 9
+Erros do cache (misses): 3
+Taxa de acerto: 75.0%
+Substituições: 0
+Entradas no cache: 2
+Tamanho máximo do buffer: 3/3
+Tempo total: 0.0838s
+Integração verificada: fila + cache + resposta simulada.
+
+MÉTRICAS DAS GERAÇÕES — RAUANY
+{"consulta": "Quais recursos envolvem memória e arquivos?", "resposta": "[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']", "trechos_recuperados": 1, "bytes_contexto": 168, "tempo_recuperacao_s": 8.4e-05, "tempo_geracao_s": 0.037514, "tempo_total_s": 0.037598}
+{"consulta": "O que administra um sistema operacional?", "resposta": "[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']", "trechos_recuperados": 1, "bytes_contexto": 168, "tempo_recuperacao_s": 0.000428, "tempo_geracao_s": 0.039395, "tempo_total_s": 0.039823}
+{"consulta": "O que administra um sistema operacional?", "resposta": "[resposta simulada | contexto=165 chars | base='Um sistema operacional administra processos, memória, arquivos e dispositivos. E...']", "trechos_recuperados": 1, "bytes_contexto": 168, "tempo_recuperacao_s": 0.00015, "tempo_geracao_s": 0.036873, "tempo_total_s": 0.037023}

@@ -23,7 +23,7 @@ RAIZ = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RAIZ))
 
 from servidor.armazenamento.sqlite_index import SQLiteIndex  # noqa: E402
-from servidor.recuperacao_geracao import ResultadoResposta, criar_gerador_resposta  # noqa: E402
+from servidor.resposta import ResultadoResposta, criar_gerador_resposta  # noqa: E402
 
 RESULTADOS = RAIZ / "experimentos" / "resultados"
 CORPORA_DIR = RAIZ / "experimentos" / "recuperacao_corpora"

@@ -142,3 +142,23 @@ sem perdas ou duplicações. A falha descartou nove por execução.
 
 O processamento utiliza espera simulada de 0,2 segundo.
 Os resultados não representam desempenho de inferência real.
+
+## Integração com a Rauany
+
+Após gerar o índice SQLite, execute na raiz do repositório:
+
+    python3 sincronizacao/venisson/integracao_rauany.py
+
+A demonstração conecta ingestão e armazenamento do Fagner, fila,
+cache do Filipe e recuperação/geração simulada da Rauany.
+
+Três validações concluíram doze requisições cada, sem falhas ou
+duplicações. Os logs estão em:
+experimentos/resultados/venisson_integrado/validacao_rauany_rep*.txt
+
+O índice é carregado antes das threads e a conexão SQLite é fechada.
+As métricas de recuperação e geração são registradas nos cache misses.
+
+Os vetores são simulados por SHA-256; a busca não comprova relevância
+semântica. O tempo do lote exclui ingestão e carregamento inicial.
+Essas validações permanecem separadas dos experimentos C3.
