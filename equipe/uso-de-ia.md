@@ -1,4 +1,3 @@
-```markdown
 # Uso de inteligência artificial
 
 Este documento registra as ferramentas de IA utilizadas, as tarefas apoiadas
@@ -41,7 +40,8 @@ como apoio ao desenvolvimento. Executei os comandos e experimentos na minha
 máquina virtual Ubuntu e conferi as saídas, incluindo consultas processadas,
 perdas, duplicações, capacidade da fila, espera, latência e vazão.
 
-Com apoio da ferramenta, implementei e ajustei os seguintes pontos:
+Com apoio da ferramenta, implementei e ajustei os seguintes pontos durante
+os testes:
 
 - Parametrização da quantidade de produtores e consumidores, da capacidade
   do buffer e do número de consultas.
@@ -50,7 +50,8 @@ Com apoio da ferramenta, implementei e ajustei os seguintes pontos:
 - Correção da instrumentação do cenário de falha para atualizar o contador
   de ocupação do buffer.
 - Integração da fila ao armazenamento de Fagner, ao cache de Filipe e à
-  recuperação e geração simulada de Rauany, com três execuções de validação.
+  recuperação e geração simulada de Rauany, com verificação do atendimento
+  das requisições em três execuções.
 - No apoio aos testes de Rauany, correção da associação entre consultas
   e eventos concorrentes, organização das saídas em pastas independentes
   e serialização do caminho de saída no log JSON.
@@ -65,12 +66,11 @@ conferidas com as evidências disponíveis, distinguindo observações,
 hipóteses e limitações.
 
 Também utilizei ChatGPT/Codex para apoiar a redação e a organização dos
-materiais, incluindo textos do relatório, instruções de reprodução,
-documentação, conclusões, slides, gráfico e roteiro de apresentação.
-O código dos demais integrantes manteve sua atribuição original.
+materiais. A ferramenta auxiliou na elaboração de textos do relatório,
+instruções de reprodução, documentação, conclusões, slides, gráfico e roteiro
+de apresentação. O código dos demais integrantes manteve sua atribuição original.
 
 As verificações locais adicionais realizadas com apoio do Codex no Windows
 foram distinguidas das coletas experimentais realizadas na VM Linux.
 A revisão final do conteúdo e a responsabilidade pela entrega permanecem
 com os integrantes da equipe.
-```
