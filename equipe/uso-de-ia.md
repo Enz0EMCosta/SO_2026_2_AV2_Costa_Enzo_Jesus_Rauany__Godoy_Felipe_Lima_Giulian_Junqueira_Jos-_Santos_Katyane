@@ -9,6 +9,7 @@ e os procedimentos de verificação realizados pelos integrantes.
 | --- | --- | --- |
 | Claude | Filipe | Configuração do ambiente WSL2; implementação do cache compartilhado; script do experimento C4; estruturação da análise dos resultados |
 | ChatGPT/Codex | Vênisson | Apoio à implementação da fila e sincronização; integração dos componentes; elaboração de comandos e scripts experimentais; conferência e interpretação dos resultados; organização do repositório; apoio à redação do relatório, README, conclusões, slides e roteiro do vídeo |
+| Claude | Rauany | Estruturação e implementação dos módulos de recuperação e resposta; script do experimento de recuperação e geração; revisão da seção do relatório |
 
 ## Verificação das sugestões
 
