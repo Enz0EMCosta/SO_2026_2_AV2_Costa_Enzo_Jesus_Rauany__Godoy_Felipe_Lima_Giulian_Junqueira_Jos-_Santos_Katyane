@@ -1,17 +1,15 @@
+```markdown
 # Uso de inteligência artificial
 
-Declarar as ferramentas de IA utilizadas, para quais tarefas foram usadas e
-como as sugestões foram verificadas pela equipe. Registrar também alterações
-feitas pelos integrantes e confirmar que o conteúdo final foi revisado.
-
-Preencher de acordo com o uso real durante o trabalho; não declarar ferramentas
-ou contribuições que não ocorreram.
+Este documento registra as ferramentas de IA utilizadas, as tarefas apoiadas
+e os procedimentos de verificação realizados pelos integrantes.
 
 ## Ferramentas utilizadas
 
 | Ferramenta | Integrante | Tarefas |
 | --- | --- | --- |
 | Claude | Filipe | Configuração do ambiente WSL2; implementação do cache compartilhado; script do experimento C4; estruturação da análise dos resultados |
+| ChatGPT/Codex | Vênisson | Apoio à implementação da fila e sincronização; integração dos componentes; elaboração de comandos e scripts experimentais; conferência e interpretação dos resultados; organização do repositório; apoio à redação do relatório, README, conclusões, slides e roteiro do vídeo |
 
 ## Verificação das sugestões
 
@@ -37,3 +35,42 @@ Correções que fiz durante o processo:
   interpretação correspondente em vez de descartá-lo.
 
 Revisei o conteúdo final.
+
+**Vênisson — C3, fila, concorrência e integração.** Utilizei ChatGPT/Codex
+como apoio ao desenvolvimento. Executei os comandos e experimentos na minha
+máquina virtual Ubuntu e conferi as saídas, incluindo consultas processadas,
+perdas, duplicações, capacidade da fila, espera, latência e vazão.
+
+Com apoio da ferramenta, implementei e ajustei os seguintes pontos:
+
+- Parametrização da quantidade de produtores e consumidores, da capacidade
+  do buffer e do número de consultas.
+- Inclusão de métricas de latência, utilização dos consumidores e tamanho
+  médio da fila ponderado pelo tempo.
+- Correção da instrumentação do cenário de falha para atualizar o contador
+  de ocupação do buffer.
+- Integração da fila ao armazenamento de Fagner, ao cache de Filipe e à
+  recuperação e geração simulada de Rauany, com três execuções de validação.
+- No apoio aos testes de Rauany, correção da associação entre consultas
+  e eventos concorrentes, organização das saídas em pastas independentes
+  e serialização do caminho de saída no log JSON.
+- Preservação dos valores atípicos e repetição da coleta para verificar
+  sua ocorrência, sem atribuir uma causa não confirmada.
+- Separação dos resultados dos experimentos C3 e das validações integradas,
+  pois utilizam cargas e custos de processamento diferentes.
+
+Os resultados apresentados foram obtidos nas execuções, sem preenchimento
+de métricas ausentes por valores sugeridos pela IA. As interpretações foram
+conferidas com as evidências disponíveis, distinguindo observações,
+hipóteses e limitações.
+
+Também utilizei ChatGPT/Codex para apoiar a redação e a organização dos
+materiais, incluindo textos do relatório, instruções de reprodução,
+documentação, conclusões, slides, gráfico e roteiro de apresentação.
+O código dos demais integrantes manteve sua atribuição original.
+
+As verificações locais adicionais realizadas com apoio do Codex no Windows
+foram distinguidas das coletas experimentais realizadas na VM Linux.
+A revisão final do conteúdo e a responsabilidade pela entrega permanecem
+com os integrantes da equipe.
+```
