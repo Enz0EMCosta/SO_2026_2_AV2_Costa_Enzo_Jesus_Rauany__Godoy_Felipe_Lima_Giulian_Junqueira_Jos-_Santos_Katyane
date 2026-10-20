@@ -1,0 +1,44 @@
+Fonte recuperada: [{'arquivo': 'sistemas-operacionais.txt', 'trecho_id': 1}]
+Contexto: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+Bytes de contexto: 168
+Recuperação verificada.
+
+ENVIADA P0-Q0 | fila=1 | espera por vaga=0.0000s
+ENVIADA P0-Q1 | fila=2 | espera por vaga=0.0020s
+ENVIADA P0-Q2 | fila=3 | espera por vaga=0.0000s
+ENVIADA P0-Q3 | fila=3 | espera por vaga=0.0000s
+ENVIADA P1-Q0 | fila=2 | espera por vaga=0.0000s
+CONSUMIDOR 0 | P0-Q0 | cache=ERRO | espera na fila=0.0024s | atendimento=0.0835s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+CONSUMIDOR 0 | P0-Q2 | cache=ACERTO | espera na fila=0.0838s | atendimento=0.0000s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+CONSUMIDOR 0 | P1-Q0 | cache=ACERTO | espera na fila=0.0811s | atendimento=0.0000s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+ENVIADA P1-Q1 | fila=1 | espera por vaga=0.0809s
+ENVIADA P1-Q2 | fila=2 | espera por vaga=0.0000s
+ENVIADA P1-Q3 | fila=3 | espera por vaga=0.0000s
+CONSUMIDOR 1 | P0-Q1 | cache=ERRO | espera na fila=0.0024s | atendimento=0.0837s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+CONSUMIDOR 1 | P1-Q1 | cache=ACERTO | espera na fila=0.0019s | atendimento=0.0000s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+CONSUMIDOR 1 | P1-Q2 | cache=ACERTO | espera na fila=0.0019s | atendimento=0.0000s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+CONSUMIDOR 1 | P1-Q3 | cache=ACERTO | espera na fila=0.0019s | atendimento=0.0000s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+ENVIADA P1-Q4 | fila=1 | espera por vaga=0.0019s
+ENVIADA P1-Q5 | fila=2 | espera por vaga=0.0000s
+CONSUMIDOR 1 | P1-Q4 | cache=ACERTO | espera na fila=0.0001s | atendimento=0.0000s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+CONSUMIDOR 1 | P1-Q5 | cache=ACERTO | espera na fila=0.0004s | atendimento=0.0000s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+ENVIADA P0-Q4 | fila=1 | espera por vaga=0.0837s
+ENVIADA P0-Q5 | fila=2 | espera por vaga=0.0000s
+CONSUMIDOR 1 | P0-Q4 | cache=ACERTO | espera na fila=0.0017s | atendimento=0.0000s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+CONSUMIDOR 1 | P0-Q5 | cache=ACERTO | espera na fila=0.0007s | atendimento=0.0000s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+CONSUMIDOR 0 | P0-Q3 | cache=ERRO | espera na fila=0.0809s | atendimento=0.0853s | resposta=[Resposta simulada] Contexto recuperado: Um sistema operacional administra processos, memória, arquivos e dispositivos. Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.
+
+RESULTADO DA INTEGRAÇÃO
+Requisições enviadas: 12
+Concluídas: 12
+Falhas de processamento: 0
+Não concluídas: 0
+Duplicadas: 0
+Acertos do cache: 9
+Erros do cache (misses): 3
+Taxa de acerto: 75.0%
+Substituições: 0
+Entradas no cache: 2
+Tamanho máximo do buffer: 3/3
+Tempo total: 0.1765s
+Integração verificada: fila + cache + resposta simulada.

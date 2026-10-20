@@ -72,3 +72,36 @@ Os valores de acertos e misses podem variar conforme o escalonamento.
 
 Essa integração ainda não inclui ingestão, armazenamento ou recuperação
 de documentos. Os experimentos C3 originais permanecem separados.
+
+## Integração com ingestão e armazenamento SQLite
+
+Esta demonstração conecta a ingestão e o armazenamento do Fagner à fila,
+ao cache do Filipe e a um adaptador provisório de recuperação lexical
+com resposta simulada.
+
+Execute a partir da raiz do repositório:
+
+```bash
+python3 -m servidor.ingestao.pipeline corpus-exemplo \
+  --database experimentos/resultados/venisson_integrado/indice.sqlite3 \
+  --summaries experimentos/resultados/venisson_integrado/ingestao
+
+python3 sincronizacao/venisson/integracao_sqlite.py
+```
+
+O índice é carregado antes do início das threads e a conexão SQLite é
+fechada. Os consumidores compartilham os trechos somente para leitura.
+
+A recuperação seleciona trechos por palavras em comum. Os vetores
+simulados do índice não são utilizados para similaridade semântica.
+A geração simula custo proporcional ao tamanho do contexto.
+
+As três validações concluíram doze requisições cada, sem falhas ou
+duplicações. Os logs estão em experimentos/resultados/venisson_integrado/.
+
+Essas validações são separadas dos experimentos C3 originais.
+O tempo do lote não inclui ingestão nem carregamento inicial do índice.
+O corpus mínimo verifica a conexão entre componentes, sem avaliar
+a qualidade da recuperação.
+
+O adaptador poderá ser substituído pela implementação da Rauany.
