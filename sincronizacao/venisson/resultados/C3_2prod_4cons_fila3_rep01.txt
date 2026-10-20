@@ -1,0 +1,46 @@
+PRODUZIDA P0-Q0 | fila após inserção=1 | espera por vaga=0.0000s
+PRODUZIDA P0-Q1 | fila após inserção=2 | espera por vaga=0.0000s
+PRODUZIDA P0-Q2 | fila após inserção=3 | espera por vaga=0.0000s
+CONSUMIDOR 1 iniciou P0-Q0 | espera na fila=0.0004s | fila após retirada=2
+CONSUMIDOR 3 iniciou P0-Q2 | espera na fila=0.0013s | fila após retirada=1
+CONSUMIDOR 2 iniciou P0-Q1 | espera na fila=0.0007s | fila após retirada=1
+PRODUZIDA P0-Q3 | fila após inserção=2 | espera por vaga=0.0007s
+PRODUZIDA P0-Q4 | fila após inserção=2 | espera por vaga=0.0000s
+PRODUZIDA P0-Q5 | fila após inserção=3 | espera por vaga=0.0000s
+CONSUMIDOR 0 iniciou P0-Q3 | espera na fila=0.0033s | fila após retirada=2
+PRODUZIDA P1-Q0 | fila após inserção=3 | espera por vaga=0.0000s
+CONSUMIDOR 1 concluiu P0-Q0
+CONSUMIDOR 1 iniciou P0-Q4 | espera na fila=0.1998s | fila após retirada=2
+PRODUZIDA P1-Q1 | fila após inserção=3 | espera por vaga=0.1958s
+CONSUMIDOR 3 concluiu P0-Q2
+CONSUMIDOR 3 iniciou P0-Q5 | espera na fila=0.2005s | fila após retirada=2
+PRODUZIDA P1-Q2 | fila após inserção=3 | espera por vaga=0.0010s
+CONSUMIDOR 2 concluiu P0-Q1
+CONSUMIDOR 2 iniciou P1-Q0 | espera na fila=0.1978s | fila após retirada=2
+PRODUZIDA P1-Q3 | fila após inserção=3 | espera por vaga=0.0002s
+CONSUMIDOR 0 concluiu P0-Q3
+CONSUMIDOR 0 iniciou P1-Q1 | espera na fila=0.0044s | fila após retirada=2
+PRODUZIDA P1-Q4 | fila após inserção=3 | espera por vaga=0.0033s
+CONSUMIDOR 1 concluiu P0-Q4
+CONSUMIDOR 1 iniciou P1-Q2 | espera na fila=0.1996s | fila após retirada=2
+PRODUZIDA P1-Q5 | fila após inserção=3 | espera por vaga=0.1964s
+CONSUMIDOR 2 concluiu P1-Q0
+CONSUMIDOR 2 iniciou P1-Q3 | espera na fila=0.2008s | fila após retirada=2
+CONSUMIDOR 3 concluiu P0-Q5
+CONSUMIDOR 3 iniciou P1-Q4 | espera na fila=0.1977s | fila após retirada=2
+CONSUMIDOR 0 concluiu P1-Q1
+CONSUMIDOR 0 iniciou P1-Q5 | espera na fila=0.0058s | fila após retirada=2
+CONSUMIDOR 1 concluiu P1-Q2
+CONSUMIDOR 2 concluiu P1-Q3
+CONSUMIDOR 3 concluiu P1-Q4
+CONSUMIDOR 0 concluiu P1-Q5
+
+RESULTADO
+Consultas esperadas: 12
+Consultas processadas: 12
+Perdidas: 0
+Duplicadas: 0
+Tamanho máximo do buffer: 3/3
+Espera média na fila: 0.1010s
+Tempo total: 0.6184s
+Vazão: 19.41 consultas/s

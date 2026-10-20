@@ -1,0 +1,29 @@
+FALHA CONTROLADA: consumidores inicialmente pausados
+ACEITA P0-Q0 | fila=1
+ACEITA P0-Q1 | fila=2
+ACEITA P0-Q2 | fila=3
+DESCARTADA P0-Q3: fila cheia
+DESCARTADA P0-Q4: fila cheia
+DESCARTADA P0-Q5: fila cheia
+DESCARTADA P1-Q0: fila cheia
+DESCARTADA P1-Q1: fila cheia
+DESCARTADA P1-Q2: fila cheia
+DESCARTADA P1-Q3: fila cheia
+DESCARTADA P1-Q4: fila cheia
+DESCARTADA P1-Q5: fila cheia
+Liberando consumidores para esvaziar o buffer
+CONSUMIDOR 0 iniciou P0-Q0 | espera na fila=0.0018s | fila após retirada=2
+CONSUMIDOR 1 iniciou P0-Q1 | espera na fila=0.0035s | fila após retirada=1
+CONSUMIDOR 0 concluiu P0-Q0
+CONSUMIDOR 0 iniciou P0-Q2 | espera na fila=0.2025s | fila após retirada=2
+CONSUMIDOR 1 concluiu P0-Q1
+CONSUMIDOR 0 concluiu P0-Q2
+
+RESULTADO DA FALHA
+Consultas enviadas: 12
+Processadas: 3
+Descartadas: 9
+Não processadas: 9
+Duplicadas: 0
+Tamanho máximo do buffer: 3
+Falha reproduzida e todas as consultas contabilizadas.
