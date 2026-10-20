@@ -17,7 +17,9 @@ def produtor_sem_espera(numero):
             continue
 
         with fila.mutex:
+            fila.atualizar_area_fila()
             fila.buffer.append((consulta, time.perf_counter()))
+            fila.fila_consultas += 1
             tamanho = len(fila.buffer)
             fila.tamanho_maximo = max(fila.tamanho_maximo, tamanho)
 

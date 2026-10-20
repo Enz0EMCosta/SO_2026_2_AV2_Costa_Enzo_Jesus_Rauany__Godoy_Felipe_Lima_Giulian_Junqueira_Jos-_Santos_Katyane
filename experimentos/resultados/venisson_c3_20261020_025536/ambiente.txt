@@ -1,0 +1,6 @@
+Linux so2 6.8.0-147-generic #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:33:16 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+Python 3.12.3
+dbf6f57410dddb2ed00984a459f32c04d0f9a848
+ sincronizacao/venisson/falha_controlada.py |  2 +
+ sincronizacao/venisson/fila.py             | 85 +++++++++++++++++++++++++++++-
+ 2 files changed, 85 insertions(+), 2 deletions(-)

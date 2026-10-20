@@ -105,3 +105,40 @@ O corpus mínimo verifica a conexão entre componentes, sem avaliar
 a qualidade da recuperação.
 
 O adaptador poderá ser substituído pela implementação da Rauany.
+
+## C3 — Coleta com métricas ampliadas
+
+O script fila.py aceita parâmetros de execução:
+
+```bash
+python3 sincronizacao/venisson/fila.py \
+  --produtores 2 --consumidores 2 --capacidade 3 \
+  --consultas-por-produtor 6
+```
+
+Foram realizadas três repetições com 1, 2 e 4 consumidores,
+mantendo dois produtores, doze consultas e capacidade três.
+Um consumidor constitui a referência sequencial de atendimento.
+
+Métricas:
+- Espera na fila: da inserção até a retirada.
+- Latência: da tentativa de envio até o fim do processamento,
+  incluindo a espera do produtor por vaga.
+- Tamanho médio da fila: média ponderada pelo tempo, excluindo sentinelas.
+- Utilização: tempo dentro do processamento dividido pela duração
+  do experimento; representa ocupação do consumidor, não uso de CPU.
+- p95: método do posto mais próximo. Com doze consultas, corresponde
+  ao maior valor de latência observado na execução.
+
+As saídas estão em:
+experimentos/resultados/venisson_c3_20261020_025536/
+
+A pasta inclui nove execuções normais, três de falha e três de correção,
+além do ambiente e do patch do código durante a coleta de concorrência.
+O pequeno ajuste de instrumentação da falha foi aplicado antes dessa coleta.
+
+Todas as execuções normais e corrigidas concluíram doze consultas
+sem perdas ou duplicações. A falha descartou nove por execução.
+
+O processamento utiliza espera simulada de 0,2 segundo.
+Os resultados não representam desempenho de inferência real.

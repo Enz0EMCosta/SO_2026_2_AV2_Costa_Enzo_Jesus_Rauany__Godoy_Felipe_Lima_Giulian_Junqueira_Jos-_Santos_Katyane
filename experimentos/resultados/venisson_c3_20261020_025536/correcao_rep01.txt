@@ -1,0 +1,47 @@
+CORREÇÃO: produtores aguardam vagas, sem descartar consultas
+Consumidores iniciarão após atraso de 0,5 segundo
+PRODUZIDA P0-Q0 | fila após inserção=1 | espera por vaga=0.0000s
+PRODUZIDA P0-Q1 | fila após inserção=2 | espera por vaga=0.0000s
+PRODUZIDA P0-Q2 | fila após inserção=3 | espera por vaga=0.0000s
+CONSUMIDOR 0 iniciou P0-Q0 | espera na fila=0.5033s | fila após retirada=2
+PRODUZIDA P0-Q3 | fila após inserção=3 | espera por vaga=0.5036s
+CONSUMIDOR 1 iniciou P0-Q1 | espera na fila=0.5086s | fila após retirada=2
+PRODUZIDA P1-Q0 | fila após inserção=3 | espera por vaga=0.5077s
+CONSUMIDOR 0 concluiu P0-Q0
+CONSUMIDOR 0 iniciou P0-Q2 | espera na fila=0.7045s | fila após retirada=2
+PRODUZIDA P0-Q4 | fila após inserção=3 | espera por vaga=0.2009s
+CONSUMIDOR 1 concluiu P0-Q1
+CONSUMIDOR 1 iniciou P0-Q3 | espera na fila=0.2065s | fila após retirada=2
+PRODUZIDA P1-Q1 | fila após inserção=3 | espera por vaga=0.1999s
+CONSUMIDOR 0 concluiu P0-Q2
+CONSUMIDOR 0 iniciou P1-Q0 | espera na fila=0.3964s | fila após retirada=2
+PRODUZIDA P0-Q5 | fila após inserção=3 | espera por vaga=0.2007s
+CONSUMIDOR 1 concluiu P0-Q3
+CONSUMIDOR 1 iniciou P0-Q4 | espera na fila=0.2066s | fila após retirada=2
+PRODUZIDA P1-Q2 | fila após inserção=3 | espera por vaga=0.2009s
+CONSUMIDOR 0 concluiu P1-Q0
+CONSUMIDOR 0 iniciou P1-Q1 | espera na fila=0.3960s | fila após retirada=2
+PRODUZIDA P1-Q3 | fila após inserção=3 | espera por vaga=0.1952s
+CONSUMIDOR 1 concluiu P0-Q4
+CONSUMIDOR 1 iniciou P0-Q5 | espera na fila=0.2064s | fila após retirada=2
+PRODUZIDA P1-Q4 | fila após inserção=3 | espera por vaga=0.0053s
+CONSUMIDOR 0 concluiu P1-Q1
+CONSUMIDOR 0 iniciou P1-Q2 | espera na fila=0.3960s | fila após retirada=2
+PRODUZIDA P1-Q5 | fila após inserção=3 | espera por vaga=0.1959s
+CONSUMIDOR 1 concluiu P0-Q5
+CONSUMIDOR 1 iniciou P1-Q3 | espera na fila=0.2067s | fila após retirada=2
+CONSUMIDOR 0 concluiu P1-Q2
+CONSUMIDOR 0 iniciou P1-Q4 | espera na fila=0.3965s | fila após retirada=2
+CONSUMIDOR 1 concluiu P1-Q3
+CONSUMIDOR 1 iniciou P1-Q5 | espera na fila=0.2059s | fila após retirada=2
+CONSUMIDOR 0 concluiu P1-Q4
+CONSUMIDOR 1 concluiu P1-Q5
+
+RESULTADO DA CORREÇÃO
+Consultas esperadas: 12
+Processadas: 12
+Perdidas: 0
+Duplicadas: 0
+Tamanho máximo do buffer: 3
+Tempo total, incluindo atraso: 1.7151s
+Correção verificada: todas as consultas foram processadas.

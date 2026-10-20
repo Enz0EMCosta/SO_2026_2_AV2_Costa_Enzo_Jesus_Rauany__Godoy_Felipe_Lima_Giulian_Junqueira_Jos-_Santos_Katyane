@@ -1,0 +1,184 @@
+diff --git a/sincronizacao/venisson/falha_controlada.py b/sincronizacao/venisson/falha_controlada.py
+index 95bbf04..6b87b5d 100644
+--- a/sincronizacao/venisson/falha_controlada.py
++++ b/sincronizacao/venisson/falha_controlada.py
+@@ -17,7 +17,9 @@ def produtor_sem_espera(numero):
+             continue
+ 
+         with fila.mutex:
++            fila.atualizar_area_fila()
+             fila.buffer.append((consulta, time.perf_counter()))
++            fila.fila_consultas += 1
+             tamanho = len(fila.buffer)
+             fila.tamanho_maximo = max(fila.tamanho_maximo, tamanho)
+ 
+diff --git a/sincronizacao/venisson/fila.py b/sincronizacao/venisson/fila.py
+index bc6d553..3256e9c 100644
+--- a/sincronizacao/venisson/fila.py
++++ b/sincronizacao/venisson/fila.py
+@@ -1,5 +1,7 @@
+ from processamento import processar_consulta
+ import threading
++import math
++import statistics
+ import time
+ from collections import deque
+ 
+@@ -17,6 +19,20 @@ log_lock = threading.Lock()
+ processadas = []
+ esperas = []
+ tamanho_maximo = 0
++envios = {}
++latencias = []
++tempo_ocupado = {}
++fila_consultas = 0
++area_fila = 0.0
++ultima_medicao = time.perf_counter()
++
++
++def atualizar_area_fila():
++    # Chamar somente com mutex adquirido.
++    global area_fila, ultima_medicao
++    agora = time.perf_counter()
++    area_fila += fila_consultas * (agora - ultima_medicao)
++    ultima_medicao = agora
+ 
+ 
+ def registrar(mensagem):
+@@ -25,14 +41,17 @@ def registrar(mensagem):
+ 
+ 
+ def inserir(item):
+-    global tamanho_maximo
++    global tamanho_maximo, fila_consultas
+     inicio = time.perf_counter()
+ 
+     empty.acquire()
+     bloqueio = time.perf_counter() - inicio
+ 
+     with mutex:
++        atualizar_area_fila()
+         buffer.append((item, time.perf_counter()))
++        if item is not None:
++            fila_consultas += 1
+         tamanho = len(buffer)
+         tamanho_maximo = max(tamanho_maximo, tamanho)
+ 
+@@ -41,10 +60,14 @@ def inserir(item):
+ 
+ 
+ def retirar():
++    global fila_consultas
+     full.acquire()
+ 
+     with mutex:
++        atualizar_area_fila()
+         item, entrada = buffer.popleft()
++        if item is not None:
++            fila_consultas -= 1
+         espera = time.perf_counter() - entrada
+         tamanho = len(buffer)
+ 
+@@ -55,6 +78,8 @@ def retirar():
+ def produtor(numero):
+     for indice in range(CONSULTAS_POR_PRODUTOR):
+         consulta = f"P{numero}-Q{indice}"
++        with mutex:
++            envios[consulta] = time.perf_counter()
+         tamanho, bloqueio = inserir(consulta)
+         registrar(
+             f"PRODUZIDA {consulta} | fila após inserção={tamanho} "
+@@ -76,17 +101,28 @@ def consumidor(numero):
+         )
+ 
+         # Simula a recuperação/geração da resposta.
++        inicio_processamento = time.perf_counter()
+         resultado = processar_consulta(consulta)
++        fim_processamento = time.perf_counter()
+ 
+         with mutex:
+             processadas.append(consulta)
+             esperas.append(espera)
++            if consulta in envios:
++                latencias.append(fim_processamento - envios[consulta])
++            tempo_ocupado[numero] = (
++                tempo_ocupado.get(numero, 0.0)
++                + fim_processamento - inicio_processamento
++            )
+ 
+         registrar(f"CONSUMIDOR {numero} concluiu {consulta}")
+ 
+ 
+ def main():
++    global area_fila, ultima_medicao
+     inicio = time.perf_counter()
++    area_fila = 0.0
++    ultima_medicao = inicio
+ 
+     consumidores = [
+         threading.Thread(target=consumidor, args=(i,))
+@@ -110,7 +146,10 @@ def main():
+     for thread in consumidores:
+         thread.join()
+ 
+-    duracao = time.perf_counter() - inicio
++    with mutex:
++        atualizar_area_fila()
++        duracao = ultima_medicao - inicio
++        tamanho_medio = area_fila / duracao
+     esperadas = {
+         f"P{p}-Q{q}"
+         for p in range(PRODUTORES)
+@@ -124,10 +163,52 @@ def main():
+     print(f"Perdidas: {len(esperadas - recebidas)}")
+     print(f"Duplicadas: {len(processadas) - len(recebidas)}")
+     print(f"Tamanho máximo do buffer: {tamanho_maximo}/{CAPACIDADE}")
++    print(f"Tamanho médio da fila (ponderado pelo tempo): {tamanho_medio:.4f}")
+     print(f"Espera média na fila: {sum(esperas)/len(esperas):.4f}s")
+     print(f"Tempo total: {duracao:.4f}s")
+     print(f"Vazão: {len(processadas)/duracao:.2f} consultas/s")
++    ordenadas = sorted(latencias)
++    p95 = ordenadas[math.ceil(0.95 * len(ordenadas)) - 1]
++    print(f"Latência média: {statistics.mean(latencias):.4f}s")
++    print(f"Latência mediana: {statistics.median(latencias):.4f}s")
++    print(f"Latência p95 (posto mais próximo): {p95:.4f}s")
++    for numero in range(CONSUMIDORES):
++        utilizacao = tempo_ocupado.get(numero, 0.0) / duracao
++        print(f"Utilização consumidor {numero}: {utilizacao:.1%}")
+ 
+ 
+ if __name__ == "__main__":
++    import argparse
++
++    parser = argparse.ArgumentParser(
++        description="C3: fila limitada com produtores e consumidores."
++    )
++    parser.add_argument("--produtores", type=int, default=2)
++    parser.add_argument("--consumidores", type=int, default=2)
++    parser.add_argument("--capacidade", type=int, default=3)
++    parser.add_argument("--consultas-por-produtor", type=int, default=6)
++    args = parser.parse_args()
++
++    if min(
++        args.produtores,
++        args.consumidores,
++        args.capacidade,
++        args.consultas_por_produtor,
++    ) < 1:
++        parser.error("Todos os parâmetros devem ser maiores que zero.")
++
++    PRODUTORES = args.produtores
++    CONSUMIDORES = args.consumidores
++    CAPACIDADE = args.capacidade
++    CONSULTAS_POR_PRODUTOR = args.consultas_por_produtor
++
++    empty = threading.Semaphore(CAPACIDADE)
++    full = threading.Semaphore(0)
++
++    print(
++        f"CONFIGURAÇÃO: produtores={PRODUTORES}, "
++        f"consumidores={CONSUMIDORES}, capacidade={CAPACIDADE}, "
++        f"consultas_por_produtor={CONSULTAS_POR_PRODUTOR}",
++        flush=True,
++    )
+     main()

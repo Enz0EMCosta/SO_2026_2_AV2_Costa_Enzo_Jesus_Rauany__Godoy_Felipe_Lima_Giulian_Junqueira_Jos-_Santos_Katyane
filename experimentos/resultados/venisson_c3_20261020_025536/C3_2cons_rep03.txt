@@ -1,0 +1,54 @@
+Comando: python3 sincronizacao/venisson/fila.py --produtores 2 --consumidores 2 --capacidade 3 --consultas-por-produtor 6
+CONFIGURAÇÃO: produtores=2, consumidores=2, capacidade=3, consultas_por_produtor=6
+PRODUZIDA P0-Q0 | fila após inserção=1 | espera por vaga=0.0000s
+PRODUZIDA P0-Q1 | fila após inserção=2 | espera por vaga=0.0000s
+PRODUZIDA P0-Q2 | fila após inserção=3 | espera por vaga=0.0000s
+CONSUMIDOR 1 iniciou P0-Q0 | espera na fila=0.0002s | fila após retirada=2
+CONSUMIDOR 0 iniciou P0-Q1 | espera na fila=0.0026s | fila após retirada=1
+PRODUZIDA P1-Q0 | fila após inserção=2 | espera por vaga=0.0000s
+PRODUZIDA P0-Q3 | fila após inserção=3 | espera por vaga=0.0027s
+CONSUMIDOR 1 concluiu P0-Q0
+CONSUMIDOR 1 iniciou P0-Q2 | espera na fila=0.2031s | fila após retirada=2
+PRODUZIDA P1-Q1 | fila após inserção=3 | espera por vaga=0.1996s
+CONSUMIDOR 0 concluiu P0-Q1
+CONSUMIDOR 0 iniciou P1-Q0 | espera na fila=0.2022s | fila após retirada=2
+PRODUZIDA P0-Q4 | fila após inserção=3 | espera por vaga=0.2019s
+CONSUMIDOR 1 concluiu P0-Q2
+CONSUMIDOR 1 iniciou P0-Q3 | espera na fila=0.4014s | fila após retirada=2
+PRODUZIDA P1-Q2 | fila após inserção=3 | espera por vaga=0.2003s
+CONSUMIDOR 0 concluiu P1-Q0
+CONSUMIDOR 0 iniciou P1-Q1 | espera na fila=0.2019s | fila após retirada=2
+PRODUZIDA P0-Q5 | fila após inserção=3 | espera por vaga=0.1998s
+CONSUMIDOR 1 concluiu P0-Q3
+CONSUMIDOR 1 iniciou P0-Q4 | espera na fila=0.3989s | fila após retirada=2
+PRODUZIDA P1-Q3 | fila após inserção=3 | espera por vaga=0.2017s
+CONSUMIDOR 0 concluiu P1-Q1
+CONSUMIDOR 0 iniciou P1-Q2 | espera na fila=0.2022s | fila após retirada=2
+PRODUZIDA P1-Q4 | fila após inserção=3 | espera por vaga=0.0001s
+CONSUMIDOR 1 concluiu P0-Q4
+CONSUMIDOR 1 iniciou P0-Q5 | espera na fila=0.3997s | fila após retirada=2
+PRODUZIDA P1-Q5 | fila após inserção=3 | espera por vaga=0.1999s
+CONSUMIDOR 0 concluiu P1-Q2
+CONSUMIDOR 0 iniciou P1-Q3 | espera na fila=0.2013s | fila após retirada=2
+CONSUMIDOR 1 concluiu P0-Q5
+CONSUMIDOR 1 iniciou P1-Q4 | espera na fila=0.3998s | fila após retirada=2
+CONSUMIDOR 0 concluiu P1-Q3
+CONSUMIDOR 0 iniciou P1-Q5 | espera na fila=0.2014s | fila após retirada=2
+CONSUMIDOR 1 concluiu P1-Q4
+CONSUMIDOR 0 concluiu P1-Q5
+
+RESULTADO
+Consultas esperadas: 12
+Consultas processadas: 12
+Perdidas: 0
+Duplicadas: 0
+Tamanho máximo do buffer: 3/3
+Tamanho médio da fila (ponderado pelo tempo): 2.3011
+Espera média na fila: 0.2345s
+Tempo total: 1.2231s
+Vazão: 9.81 consultas/s
+Latência média: 0.5361s
+Latência mediana: 0.6024s
+Latência p95 (posto mais próximo): 0.8010s
+Utilização consumidor 0: 98.6%
+Utilização consumidor 1: 98.5%
