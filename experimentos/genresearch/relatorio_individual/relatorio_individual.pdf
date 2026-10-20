@@ -1,0 +1,191 @@
+%PDF-1.4
+%����
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 2754 >>
+stream
+BT
+/F1 9 Tf
+50 800 Td
+11 TL
+(# Relatório individual - Ingestão e Armazenamento do GenResearch-Servidor) Tj T*
+() Tj T*
+(## 1. Escopo e objetivo) Tj T*
+() Tj T*
+(Esta contribuição implementa e valida o pipeline local de ingestão do GenResearch-Servidor. O) Tj T*
+(escopo compreende leitura recursiva de arquivos `.txt` UTF-8, fragmentação por palavras,) Tj T*
+(vetorização determinística simulada e persistência em SQLite. Não inclui servidor HTTP, fila,) Tj T*
+(cache, geração de respostas ou avaliação de qualidade de recuperação. A identificação) Tj T*
+(pessoal não foi incluída porque não há responsável individual confirmado para esta parte no) Tj T*
+(repositório.) Tj T*
+() Tj T*
+(## 2. Ambiente e método) Tj T*
+() Tj T*
+(A coleta foi executada em 19/10/2026 no Windows 11 \(10.0.26200\), AMD64, Python 3.14.7 e 12 CPUs) Tj T*
+(lógicas reportadas. O commit de referência era `def19e2`; a árvore tinha alterações locais) Tj T*
+(não commitadas, incluindo esta implementação e as evidências. Não há dependências externas:) Tj T*
+(SQLite é acessado pela biblioteca padrão. O ambiente não é Linux/WSL; por isso `/proc`,) Tj T*
+(`getrusage` Linux, faltas menores/maiores, VSZ, RSS de pico e contadores de I/O não foram) Tj T*
+(coletados. Não se alterou cache de páginas ou configuração global; processos novos não) Tj T*
+(equivalem a cache frio.) Tj T*
+() Tj T*
+(O script `experimentos/scripts/benchmark_ingestao.py` gerou corpus determinístico com a semente) Tj T*
+(`genresearch-so-2026-2-seed-01`. Foram feitas três repetições por modo, em ordem alternada) Tj T*
+(standard/mmap, mmap/standard, standard/mmap. Cada repetição iniciou novo processo Python e banco) Tj T*
+(SQLite exclusivo, eliminando o efeito da deduplicação na medição. Parâmetros comuns: 200) Tj T*
+(palavras por trecho, sobreposição de 40 palavras e 128 posições por vetor.) Tj T*
+() Tj T*
+(| Corpus | Documentos | Bytes reais |) Tj T*
+(|---|---:|---:|) Tj T*
+(| pequeno | 10 | 34940 |) Tj T*
+(| medio | 76 | 265610 |) Tj T*
+(| grande | 300 | 1048690 |) Tj T*
+() Tj T*
+(## 3. Pipeline, vetores e armazenamento) Tj T*
+() Tj T*
+(`standard` usa leitura convencional de bytes; `mmap` mapeia o arquivo apenas se não vazio, fecha) Tj T*
+(arquivo e mapeamento, e então materializa `mapped[:]` para decodificar UTF-8. Portanto, mmap não) Tj T*
+(elimina a cópia de bytes/texto nesta implementação. Os trechos preservam caminho relativo,) Tj T*
+(identificador do documento e posição ordinal. O arquivo vazio é ignorado e erro de) Tj T*
+(decodificação é registrado sem encerrar toda a ingestão.) Tj T*
+() Tj T*
+(Os vetores são simulados: SHA-256 do texto com contador, expandido para dimensão configurável e) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 3093 >>
+stream
+BT
+/F1 9 Tf
+50 800 Td
+11 TL
+(normalizado em L2; o formato persistido é `float32-le`. O mesmo texto é reproduzível entre) Tj T*
+(processos, mas o vetor não representa semântica e não valida a qualidade de recuperação. A) Tj T*
+(recuperação recebe lotes por `SQLiteIndex.iter_chunk_vectors\(batch_size=128\)`.) Tj T*
+() Tj T*
+(SQLite guarda `documents` \(caminho relativo, bytes e SHA-256\), `chunks` \(documento, posição e) Tj T*
+(texto\), `vectors` \(BLOB, dimensão e formato\), `index_config` e `ingestion_runs`. Reingestão) Tj T*
+(idêntica não duplica registros; conteúdo alterado substitui o documento e seus dependentes.) Tj T*
+(Mudanças de dimensão, tamanho ou sobreposição exigem `--rebuild`, que torna a remoção) Tj T*
+(explícita. O banco não utiliza WAL: o tamanho medido é somente o arquivo `.sqlite3` gerado em) Tj T*
+(cada repetição.) Tj T*
+() Tj T*
+(Tamanho do corpus é a soma dos bytes dos textos de entrada. Volume dos vetores é a soma medida) Tj T*
+(dos BLOBs \(`n_vetores �? 128 �? 4`\); tamanho do SQLite inclui páginas, índices, textos,) Tj T*
+(metadados e os vetores, portanto não é igual ao volume de vetores nem mede E/S física.) Tj T*
+() Tj T*
+(## 4. Testes funcionais) Tj T*
+() Tj T*
+(`python -m unittest discover -s tests -v` executou 6 testes e todos passaram. Eles verificaram:) Tj T*
+(fragmentação e sobreposição; validação de parâmetros; vetores reprodutíveis e) Tj T*
+(normalizados; persistência, reabertura e leitura em lote; reingestão sem duplicação;) Tj T*
+(equivalência do índice standard/mmap; corpus inexistente; arquivo vazio; subpasta; documento) Tj T*
+(modificado; configuração divergente que requer reconstrução; e UTF-8 inválido tratado como) Tj T*
+(erro registrado. Durante a validação, foi corrigido apenas o coletor: o processo-filho passou a) Tj T*
+(usar `-X utf8`, pois o codepage do console do Windows impedia o coletor de decodificar seu JSON.) Tj T*
+(Não houve correção funcional necessária no pipeline.) Tj T*
+() Tj T*
+(## 5. Resultados reais da coleta) Tj T*
+() Tj T*
+(| Corpus | Modo | Média total \(s\) | Mediana \(s\) | DP amostral \(s\) | Média leitura \(s\) |) Tj T*
+(|---|---|---:|---:|---:|---:|) Tj T*
+(| pequeno | standard | 0.032222 | 0.032998 | 0.003157 | 0.000664 |) Tj T*
+(| pequeno | mmap | 0.030746 | 0.029642 | 0.002126 | 0.000835 |) Tj T*
+(| medio | standard | 0.046374 | 0.047155 | 0.004370 | 0.005170 |) Tj T*
+(| medio | mmap | 0.047141 | 0.044832 | 0.005208 | 0.005793 |) Tj T*
+(| grande | standard | 0.097683 | 0.099653 | 0.004029 | 0.019726 |) Tj T*
+(| grande | mmap | 0.100051 | 0.096948 | 0.006811 | 0.022369 |) Tj T*
+() Tj T*
+() Tj T*
+(Os resultados brutos contêm 18 linhas e mostram, em todas as repetições, as mesmas contagens) Tj T*
+(para cada corpus e modo. No corpus médio, mmap teve média total menor \(0,053986 s versus) Tj T*
+(0,061417 s\); no grande, standard teve média menor \(0,119132 s versus 0,129144 s\). As amostras) Tj T*
+(são pequenas \(n=3\) e os tempos são curtos; não foi calculado p95 por baixa representatividade.) Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 2336 >>
+stream
+BT
+/F1 9 Tf
+50 800 Td
+11 TL
+(Logo, os dados não sustentam uma conclusão geral de superioridade do mmap.) Tj T*
+() Tj T*
+(## 6. Relação com Sistemas Operacionais e limitações) Tj T*
+() Tj T*
+(No modo convencional, a aplicação solicita leitura de arquivo ao sistema; no modo mmap, o) Tj T*
+(espaço de endereçamento recebe um mapeamento e o sistema operacional pode trazer páginas sob) Tj T*
+(demanda. Ambos estão sujeitos ao cache de páginas, que não foi controlado. SQLite adiciona) Tj T*
+(buffers, índices, transações e páginas de armazenamento; por isso o crescimento do índice) Tj T*
+(não é somente o crescimento dos vetores. A fragmentação por documento evita carregar o corpus) Tj T*
+(completo de uma vez, mas cada documento ainda é lido e decodificado integralmente antes de ser) Tj T*
+(fragmentado.) Tj T*
+() Tj T*
+(Não foram medidos pico de RSS, VSZ, faltas de página ou contadores de E/S; não são inferidos) Tj T*
+(de uma amostra. Também não houve teste em Linux/WSL nem controle de cache frio. A comparação) Tj T*
+(avalia custos do pipeline com vetores simulados, não qualidade semântica, concorrência ou) Tj T*
+(sincronização.) Tj T*
+() Tj T*
+(## 7. Reprodução e integração) Tj T*
+() Tj T*
+(python -m unittest discover -s tests -v) Tj T*
+(python experimentos/scripts/benchmark_ingestao.py) Tj T*
+(python experimentos/scripts/generate_relatorio_ingestao.py) Tj T*
+() Tj T*
+(Os dados ficam em `experimentos/genresearch/evidencias/`: `raw_results.csv`, `summary.csv`,) Tj T*
+(`corpora.json`, `environment.json`, bancos individuais e resumos JSON. O restante do projeto pode) Tj T*
+(abrir `SQLiteIndex\(caminho\).iter_chunk_vectors\(128\)` para consumir texto, origem, posição e) Tj T*
+(vetor em lotes.) Tj T*
+() Tj T*
+(**Texto para a tabela de contribuições:** �??Implementação e validação da ingestão) Tj T*
+(recursiva de corpus, fragmentação configurável, vetores simulados determinísticos,) Tj T*
+(persistência SQLite, testes funcionais e experimento comparativo entre leitura convencional e) Tj T*
+(mmap.�?�) Tj T*
+ET
+q 0.1 0.1 0.1 RG 50 70 m 500 70 l S
+0.12 0.31 0.85 rg 60 70 34 30 re f
+0.85 0.47 0.02 rg 128 70 34 29 re f
+0.12 0.31 0.85 rg 196 70 34 44 re f
+0.85 0.47 0.02 rg 264 70 34 44 re f
+0.12 0.31 0.85 rg 332 70 34 92 re f
+0.85 0.47 0.02 rg 400 70 34 95 re f
+Q
+endstream
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000133 00000 n 
+0000000203 00000 n 
+0000000329 00000 n 
+0000003135 00000 n 
+0000003261 00000 n 
+0000006406 00000 n 
+0000006532 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+8920
+%%EOF

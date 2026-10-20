@@ -1,0 +1,2 @@
+Um sistema operacional administra processos, memória, arquivos e dispositivos.
+Este pequeno corpus sintético existe apenas para reproduzir o experimento de ingestão.

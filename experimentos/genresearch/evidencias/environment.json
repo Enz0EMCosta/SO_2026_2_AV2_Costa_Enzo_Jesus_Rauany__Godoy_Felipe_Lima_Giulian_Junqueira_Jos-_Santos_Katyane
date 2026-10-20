@@ -1,0 +1,9 @@
+{
+  "timestamp_utc": "2026-10-20T00:59:40.368174+00:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "machine": "AMD64",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "cpu_count": 12,
+  "swap_or_memory": "N\u00c3\u00a3o coletado: coleta executada no Windows sem ferramenta Linux /proc/free."
+}

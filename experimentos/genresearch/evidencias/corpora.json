@@ -1,0 +1,23 @@
+{
+  "seed": "genresearch-so-2026-2-seed-01",
+  "corpora": {
+    "pequeno": {
+      "target_bytes": 32768,
+      "actual_bytes": 34940,
+      "documents": 10,
+      "path": "experimentos\\genresearch\\evidencias\\corpora\\pequeno"
+    },
+    "medio": {
+      "target_bytes": 262144,
+      "actual_bytes": 265610,
+      "documents": 76,
+      "path": "experimentos\\genresearch\\evidencias\\corpora\\medio"
+    },
+    "grande": {
+      "target_bytes": 1048576,
+      "actual_bytes": 1048690,
+      "documents": 300,
+      "path": "experimentos\\genresearch\\evidencias\\corpora\\grande"
+    }
+  }
+}

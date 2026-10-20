@@ -1,0 +1,38 @@
+{
+  "run_id": "53dee856-833c-4aed-ab02-0b593c9f6f02",
+  "created_at": "2026-10-20T00:59:41.539498+00:00",
+  "settings": {
+    "read_mode": "standard",
+    "chunk_words": 200,
+    "overlap_words": 40,
+    "embedding": {
+      "method": "sha256-deterministic-simulated",
+      "dimension": 128,
+      "normalized": "L2"
+    }
+  },
+  "processed": 76,
+  "ignored": 0,
+  "errors": 0,
+  "chunks": 228,
+  "vectors": 228,
+  "corpus_bytes": 265610,
+  "index_counts": {
+    "documents": 76,
+    "chunks": 228,
+    "vectors": 228
+  },
+  "vector_volume_bytes_measured": 116736,
+  "storage_bytes": 651264,
+  "timings": {
+    "read_seconds": 0.005166799761354923,
+    "chunk_seconds": 0.0013550000730901957,
+    "vector_seconds": 0.005471299809869379,
+    "write_seconds": 0.001682800066191703,
+    "total_seconds": 0.04166609997628257
+  },
+  "notes": {
+    "storage_bytes": "tamanho total do SQLite (textos, metadados e vetores)",
+    "vector_volume_bytes_measured": "soma medida dos BLOBs float32-le; nÃ£o Ã© E/S fÃ­sica"
+  }
+}
