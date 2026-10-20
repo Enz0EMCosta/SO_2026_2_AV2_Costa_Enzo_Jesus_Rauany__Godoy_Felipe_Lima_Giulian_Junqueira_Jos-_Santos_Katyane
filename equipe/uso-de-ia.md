@@ -74,3 +74,17 @@ As verificações locais adicionais realizadas com apoio do Codex no Windows
 foram distinguidas das coletas experimentais realizadas na VM Linux.
 A revisão final do conteúdo e a responsabilidade pela entrega permanecem
 com os integrantes da equipe.
+
+**Rauany — recuperação e resposta/geração.** Li e revisei o código antes de usar. Executei o experimento no meu ambiente (Ubuntu 24.04.5, 2 CPUs, 3,8 GiB de RAM) e não aceitei nenhum valor sugerido pela ferramenta sem conferir nos dados.
+
+Correções que fiz durante o processo:
+
+- A primeira versão assumia nomes de módulos e chaves do índice que não existiam. Substituí pelos reais (`SQLiteIndex.iter_chunk_vectors` e `deterministic_embedding`), e a vetorização da consulta passou a reproduzir exatamente a da ingestão.
+- Com mais de um trabalhador, a conexão SQLite falhava por ser usada fora da thread que a criou. Passei a carregar o índice em memória uma única vez, na criação do componente.
+- A versão inicial era um único arquivo. Separei em `recuperacao` e `resposta`, conforme o `servidor/README.md`.
+- O benchmark emparelhava consultas e métricas pela ordem de conclusão das threads, o que podia associar o tempo à consulta errada. Corrigi usando a consulta registrada em cada evento.
+- A explicação inicial para o efeito do tamanho do corpus estava errada. Separando os tempos no CSV, a geração ficou estável (~313 ms) e o que cresce é a recuperação (1,3 → 8,9 → 33,5 ms).
+- Mantive a anomalia de ~47 s nos dados e no relatório, sem removê-la, e registrei que a causa não foi investigada.
+
+Revisei o conteúdo final.
+
