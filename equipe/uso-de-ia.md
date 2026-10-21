@@ -10,6 +10,7 @@ e os procedimentos de verificação realizados pelos integrantes.
 | Claude | Filipe | Configuração do ambiente WSL2; implementação do cache compartilhado; script do experimento C4; estruturação da análise dos resultados |
 | ChatGPT/Codex | Vênisson | Apoio à implementação da fila e sincronização; integração dos componentes; elaboração de comandos e scripts experimentais; conferência e interpretação dos resultados; organização do repositório; apoio à redação do relatório, README, conclusões, slides e roteiro do vídeo |
 | Claude | Rauany | Estruturação e implementação dos módulos de recuperação e resposta; script do experimento de recuperação e geração; revisão da seção do relatório |
+| ChatGPT | Katyane | Apoio à compreensão dos experimentos C5 e C6, revisão de procedimentos, interpretação de métricas, organização de gráficos, documentação e preparação dos slides |
 
 ## Verificação das sugestões
 
@@ -89,3 +90,17 @@ Correções que fiz durante o processo:
 
 Revisei o conteúdo final.
 
+Katyane — C5, pressão de memória, C6, falha controlada e documentação. Utilizei o ChatGPT como ferramenta de apoio para esclarecer conceitos de Sistemas Operacionais, revisar procedimentos experimentais e organizar a apresentação dos resultados.
+
+Os experimentos foram executados no ambiente Ubuntu, com análise dos arquivos CSV e das métricas coletadas.
+
+Durante o desenvolvimento, realizei as seguintes atividades:
+
+* Executei os testes de pressão de memória com alocações de 100, 250 e 500 MiB, realizando três repetições por configuração.
+* Analisei os tempos médios, o consumo de memória RSS, a utilização de swap e as faltas de página.
+* Executei o experimento de falha controlada, verificando o tratamento da exceção FileNotFoundError nas três execuções.
+* Conferi os resultados registrados nos arquivos CSV e organizei os gráficos de tempo e consumo de memória.
+* Revisei a documentação dos experimentos C5 e C6 e organizei os resultados para apresentação.
+* Identifiquei e registrei as limitações dos testes, distinguindo os experimentos sintéticos da execução completa do servidor.
+
+Os valores apresentados foram obtidos das execuções experimentais e conferidos nos registros produzidos. As ferramentas de IA foram utilizadas como apoio à compreensão, revisão e organização do material, mantendo a responsabilidade pela análise e apresentação dos resultados.
