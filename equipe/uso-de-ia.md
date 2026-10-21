@@ -102,5 +102,4 @@ Durante o desenvolvimento, realizei as seguintes atividades:
 * Conferi os resultados registrados nos arquivos CSV e organizei os gráficos de tempo e consumo de memória.
 * Revisei a documentação dos experimentos C5 e C6 e organizei os resultados para apresentação.
 * Identifiquei e registrei as limitações dos testes, distinguindo os experimentos sintéticos da execução completa do servidor.
-
 Os valores apresentados foram obtidos das execuções experimentais e conferidos nos registros produzidos. As ferramentas de IA foram utilizadas como apoio à compreensão, revisão e organização do material, mantendo a responsabilidade pela análise e apresentação dos resultados.
